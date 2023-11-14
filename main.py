@@ -11,7 +11,8 @@ def index():
 @app.route('/admin/<tableName>')
 def admin(tableName):
     items = db.admin(tableName)
-    return render_template("admin.html", items=items)
+    colonnes = db.titreColonne(tableName)
+    return render_template("admin.html", items=items, colonnes=colonnes)
 
 
 #essayez d'appeler cette route avec par exemple l'URL : http://127.0.0.1:5000/films_de/13848
@@ -26,4 +27,4 @@ def items_de(id_Createur):
 
    
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

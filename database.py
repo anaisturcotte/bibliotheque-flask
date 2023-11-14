@@ -30,3 +30,6 @@ def admin(tableName):
     requete = f"""select * from {tableName}"""
     return _select(requete)
 
+def titreColonne(tableName):
+    requete= f"""PRAGMA table_info({tableName});"""
+    return _select(requete)
