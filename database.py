@@ -15,18 +15,18 @@ def _select(requete, params=None):
 
 
 def get_item_by(id_Type):
-    requete = """select Item.titre, Itemm.anneeSortie
-                        from Itemm
-                        where Itemm.idType=?
-                        order by Item.annee desc"""
+    requete = """select Item.titre, Item.anneeSortie
+                    from Item
+                    where Item.idType=?
+                    order by Item.annee desc"""
     return _select(requete, params=(id_Type,))
 
 def get_all_items():
-    requete = """select item.titre, item.anneeSortie, Type.nomType
-                        from item inner join type on item.idtype=Type.id"""
+    requete = """select Item.titre, Item.anneeSortie, Type.nomType
+                        from Item inner join type on Item.idType=Type.id"""
     return _select(requete)
 
-def admin(poop):
-    requete = f"""select * from {poop}"""
+def admin(tableName): 
+    requete = f"""select * from {tableName}"""
     return _select(requete)
 

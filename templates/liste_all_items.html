@@ -7,8 +7,8 @@
 <table class="table is-narrow is-hoverable is-bordered">
     <thead><tr><td><b>Titre</b></td><td><b>Année</b></td><td><b>Genre</b></td></thead>
     <tbody>
-    {% for titre, annee, genre in films %}
-        <tr><td>{{ titre }}</td><td>{{ annee }}</td><td>{{ genre }}</td></tr>
+    {% for titre, anneeSorie, nomGenre in items %}
+        <tr><td>{{ titre }}</td><td>{{ anneeSortie }}</td><td>{{ nomGenre }}</td></tr>
     {% endfor %}
     </tbody>
 </table>
