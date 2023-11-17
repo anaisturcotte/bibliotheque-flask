@@ -3,7 +3,13 @@
 
 {% block container %}
 
-<h1 class="title is-1">Liste de tous les films</h1>
+<div class="main">
+  <div class="container green box"><a href="/Admin">Voir tout</a></div> <!-- Je sais pas comment faire que le lien amene a une autre page -->
+  <div class="container red box">Films</div>
+  <div class="container orange box">Livres</div>
+  <div class="container yellow box">Musiques</div>
+</div>
+<!-- <h1 class="title is-1">Liste de tous les films</h1>
 <table class="table is-narrow is-hoverable is-bordered">
     <thead><tr><td><b>Titre</b></td><td><b>Année</b></td><td><b>Genre</b></td></thead>
     <tbody>
@@ -11,6 +17,6 @@
         <tr><td>{{ titre }}</td><td>{{ anneeSortie }}</td><td>{{ nomGenre }}</td></tr>
     {% endfor %}
     </tbody>
-</table>
+</table> -->
 
 {% endblock %}
