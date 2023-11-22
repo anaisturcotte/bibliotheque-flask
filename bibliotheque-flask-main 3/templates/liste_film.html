@@ -1,0 +1,21 @@
+{% extends "common_layout.html" %}
+{% block title %} Liste de films {% endblock %}
+
+{% block container %}
+
+<div class="secondHeaderRow yellow"><p style="color:#FFAF00;">hehe</p></div>
+<div class="secondHeaderRow orange"><p style="color:#D34A24">hehe</p></div>
+<div class="secondHeaderRow red"><p style="color:#992800">hehe</p></div>
+<div class="secondHeaderRow green"><p style="color:#3C7F72">hehe</p></div>
+
+<h1 class="title is-1">Liste de tous les films</h1>
+<table class="table is-narrow is-hoverable is-bordered">
+    <thead><tr><td><b>Titre</b></td><td><b>Année</b></td></thead>
+    <tbody>
+    {% for titre, anneeSortie in items %}
+        <tr><td>{{ titre }}</td><td>{{ anneeSortie }}</td>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

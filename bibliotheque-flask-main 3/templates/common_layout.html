@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang='fr'>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='movie.png') }}">
+  {% block head %}{% endblock %}
+  <title>
+  {% block title %}{% endblock %}
+  </title>
+</head>
+
+<body>
+
+{% block content %}
+
+
+  {% block container %}
+  {% endblock %}
+
+{% endblock %}
+</body>
+</html>
