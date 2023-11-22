@@ -14,17 +14,52 @@ def admin(tableName):
     colonnes = db.titreColonne(tableName)
     return render_template("admin.html", items=items, colonnes=colonnes)
 
-
-#essayez d'appeler cette route avec par exemple l'URL : http://127.0.0.1:5000/films_de/13848
-#13848 est l'id de Charles Chaplin
-@app.route('/Items_de/<int:id_Createur>')
-def items_de(id_Createur):
-    print(id_Createur)
-    items = db.get_items_by(id_Createur)
+@app.route('/liste_livre.html')
+def items_livre():
+    print()
+    items = db.get_all_livre()
     print(items)
-    return render_template("liste_Items.html", items=items)
+    return render_template("liste_livre.html", items=items)
+
+@app.route('/liste_film.html')
+def items_film():
+    print()
+    items = db.get_all_films()
+    print(items)
+    return render_template("liste_film.html", items=items)
+
+@app.route('/liste_musique.html')
+def items_musique():
+    print()
+    items = db.get_all_musiques()
+    print(items)
+    return render_template("liste_musique.html", items=items)
+
+@app.route('/liste_items.html')
+def items():
+    print()
+    items = db.get_all_items()
+    print(items)
+    return render_template("liste_items.html", items=items)
+
+# @app.route('/liste_items.html')
+# def items():
+#     print()
+#     items = db.get_all_items()
+#     print(items)
+#     return render_template("liste_items.html", items=items)
 
 
+###################### FORM POUR RENTRER DES DONNEES DANS LA BASE DEPUIS LE SITE ######################
+
+@app.route('/form.html')
+def items():
+    print()
+    items = db.get_all_items()
+    print(items)
+    return render_template("form.html", items=items)
+
+#######################################################################################################
    
 if __name__ == "__main__":
     app.run(debug=True)

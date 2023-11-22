@@ -14,16 +14,28 @@ def _select(requete, params=None):
     return res
 
 
-def get_item_by(id_Type):
+def get_item_by(id_Createur):
     requete = """select Item.titre, Item.anneeSortie
                     from Item
-                    where Item.idType=?
+                    where Item.idCreateur=?
                     order by Item.annee desc"""
-    return _select(requete, params=(id_Type,))
+    return _select(requete, params=(id_Createur))
 
 def get_all_items():
     requete = """select Item.titre, Item.anneeSortie, Type.nomType
                         from Item inner join type on Item.idType=Type.id"""
+    return _select(requete)
+
+def get_all_films():
+    requete = """select titre, anneeSortie from Item inner join type on Item.idType=Type.id where Type.nomType = 'Film'"""
+    return _select(requete)
+
+def get_all_livre():
+    requete = """select titre, anneeSortie from Item inner join type on Item.idType=Type.id where Type.nomType = 'Livre'"""
+    return _select(requete)
+
+def get_all_musiques():
+    requete = """select titre, anneeSortie from Item inner join type on Item.idType=Type.id where Type.nomType = 'Musique'"""
     return _select(requete)
 
 def admin(tableName): 

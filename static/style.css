@@ -11,6 +11,7 @@ html {
 body {
   font-family: "Calistoga";
   margin: 0;
+  background-color: #FFFBED;
 }
 h1 {
   font-size: 60px;
@@ -29,14 +30,15 @@ h1 {
   width: 100%;
   height: auto;
   background-color: #FFFBED;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 100px;
+  padding-bottom: 150px;
   text-align: center;
+  font-size: 25px;
 }
 .footer {
   background-color: #000000;
-  margin: 80px;
   text-align: center;
+  width: 100%;
 }
 .container {
   text-align: center;
@@ -56,8 +58,8 @@ h1 {
   width: 15%; 
   padding-left: 30px; 
   padding-right: 30px;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 .container::hover {
   text-decoration: underline;
@@ -76,4 +78,29 @@ h1 {
 }
 .black { 
   background-color: #000000; 
+}
+.white {
+  background-color: #FFFBED;
+}
+
+/* POUR LE HEADER DES PAGES AVEC LES TABLES */
+.secondHeaderRow {
+  position: relative; /* Set position to relative for stacking context */
+  z-index: 1;
+  width: 100%;
+  height: 30%;
+  margin-bottom: 20px;
+}
+
+.secondTextBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: fit-content;
+  display: block;
+  border-radius: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
 }
