@@ -42,22 +42,18 @@ def items():
     print(items)
     return render_template("liste_items.html", items=items)
 
-# @app.route('/liste_items.html')
-# def items():
-#     print()
-#     items = db.get_all_items()
-#     print(items)
-#     return render_template("liste_items.html", items=items)
-
 
 ###################### FORM POUR RENTRER DES DONNEES DANS LA BASE DEPUIS LE SITE ######################
 
-@app.route('/form.html')
-def items():
-    print()
-    items = db.get_all_items()
-    print(items)
-    return render_template("form.html", items=items)
+@app.route('/form', methods=['GET', 'POST'])
+def form():
+    form = questions() # la classe de questions dans database.py
+    # AJOUT D'UNE FONCTIONALITE AU FORM #
+    if form.is_submitted():
+        # utilise mtn le 'POST'
+        result  = request.form
+        return render_template('resutat_form.html')
+    return render_template('form.html', form=form)
 
 #######################################################################################################
    

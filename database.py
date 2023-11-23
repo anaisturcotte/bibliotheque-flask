@@ -45,3 +45,49 @@ def admin(tableName):
 def titreColonne(tableName):
     requete= f"""PRAGMA table_info({tableName});"""
     return _select(requete)
+
+# def insertIntoItems(valeurs):
+#     requete= f"""insert into Item (titre, anneeSortie, description, note) values ({titre}, {annee_sortie}, {description}, {note})"""
+#     id_type= idItem.idType
+#     id_createur= idItem.idCreateur
+# def insertIntoType(valeurs2):
+#     requete= f"""insert into Type (idType, nomType, nomGenre) values ({id_type}, {nom_type}, {nom_genre})"""
+# def insertIntoCreateur(valeurs3):
+#     requete= f"""insert into Createur (idCreateur, prenom, nom) values ({id_createur}, {prenom}, {nom}"""
+
+################### FORM ######################
+
+from flask_wtf import FlaskForm, CSRFProtect
+from wtforms import StringField, SubmitField, SelectField
+from wtforms.validators import data_required
+
+app = Flask(__name__)
+app.secret_key = 'poop'
+
+# Flask-WTF requires this line
+csrf = CSRFProtect(app)
+
+import secrets
+foo = secrets.token_urlsafe(16)
+app.secret_key = foo
+
+# class Questions(FlaskForm):
+#     titre = StringField('Titre :', validators=[DataRequired(), Length(1, 20)])
+#     genre = StringField('Genre :', validators=[DataRequired(), Length(1, 20)])
+#     type = SelectField('Type', choices=[('livre', 'Livre') ('film', 'Film')])
+#     createurNom = StringField('Createur nom :', validators=[DataRequired(), Length(1, 20)])
+#     createurPrenom = StringField('Createur prenom:', validators=[DataRequired(), Length(1, 20)])
+#     description = StringField('Description :', validators=[Length(1, 60)])
+#     note = SelectField('Note', choices=[('0', '0') ('1', '1') ('2', '2') ('3', '3') ('4', '4') ('5', '5') ('6', '6') ('7', '7') ('8', '8') ('9', '9') ('10', '10')])
+#     anneSortie = StringField('Date de sortie :', validators=[DataRequired(), Length(0, 5)])
+#     submit = SubmitField('Submit')
+
+
+class questions(FlaskForm):
+    # pour l'instant on va juste ajouter un createur :
+    # on definit les 'questions' : (validators=[DataRequired()  ->  sert a verifier que le champ est pas vide)
+    createurNom = StringField('Createur nom :', validators=[DataRequired()])
+    createurPrenom = StringField('Createur prenom:', validators=[DataRequired()])
+    submit = SubmitField('Submit') # bouton pour submit le form
+
+    # le form va etre sur la page form.html
