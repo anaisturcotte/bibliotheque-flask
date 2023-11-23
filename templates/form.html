@@ -1,0 +1,16 @@
+{% extends "common_layout.html" %}
+{% block title %} Form pour ajouter un createur {% endblock %}
+
+{% block container %}
+    <form action="/submit" method="post">
+        <p> 
+            {{form.createurNom.label}} 
+            {{form.createurNom(size=30)}}
+        </p>
+        <p> 
+            {{form.createurPrenom.label}}
+            {{form.createurPrenom(size=30)}}
+        </p>
+        <p> {{form.csubmit()}} </p>
+    </form>
+{% endblock %}
