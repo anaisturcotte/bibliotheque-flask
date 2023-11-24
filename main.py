@@ -1,7 +1,17 @@
 from flask import render_template, request, Flask
+# from flask_wtf import CSRFProtect
 import database as db
 
 app = Flask(__name__)
+
+# app.secret_key = 'poop'
+
+# # Flask-WTF requires this line
+# csrf = CSRFProtect(app)
+
+# import secrets
+# foo = secrets.token_urlsafe(16)
+# app.secret_key = foo
 
 @app.route('/')
 def index():
@@ -45,9 +55,9 @@ def items():
 
 ###################### FORM POUR RENTRER DES DONNEES DANS LA BASE DEPUIS LE SITE ######################
 
-@app.route('/form', methods=['GET', 'POST'])
+@app.route('/form.html', methods=['GET', 'POST'])
 def form():
-    form = questions() # la classe de questions dans database.py
+    form = db.questions() # la classe de questions dans database.py
     # AJOUT D'UNE FONCTIONALITE AU FORM #
     if form.is_submitted():
         # utilise mtn le 'POST'

@@ -57,19 +57,11 @@ def titreColonne(tableName):
 
 ################### FORM ######################
 
-from flask_wtf import FlaskForm, CSRFProtect
+from flask import Flask
+from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField
-from wtforms.validators import data_required
+from wtforms.validators import DataRequired
 
-app = Flask(__name__)
-app.secret_key = 'poop'
-
-# Flask-WTF requires this line
-csrf = CSRFProtect(app)
-
-import secrets
-foo = secrets.token_urlsafe(16)
-app.secret_key = foo
 
 # class Questions(FlaskForm):
 #     titre = StringField('Titre :', validators=[DataRequired(), Length(1, 20)])
