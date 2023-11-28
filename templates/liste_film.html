@@ -12,8 +12,8 @@
 <table class="table is-narrow is-hoverable is-bordered">
     <thead><tr><td><b>Titre</b></td><td><b>Année</b></td></thead>
     <tbody>
-    {% for titre, anneeSortie in items %}
-        <tr><td>{{ titre }}</td><td>{{ anneeSortie }}</td>
+    {% for titre, anneeSortie, description in items %}
+        <tr><td>{{ titre }}</td><td>{{ anneeSortie }}</td><td>{{ description }}</td>
     {% endfor %}
     </tbody>
 </table>

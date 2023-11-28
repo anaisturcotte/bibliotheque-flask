@@ -22,16 +22,16 @@ def get_item_by(id_Createur):
     return _select(requete, params=(id_Createur))
 
 def get_all_items():
-    requete = """select Item.image, Item.titre, Item.anneeSortie, Type.nomType
+    requete = """select Item.image, Item.titre, Item.anneeSortie, Item.description Type.nomType
                         from Item inner join type on Item.idType=Type.id"""
     return _select(requete)
 
 def get_all_films():
-    requete = """select titre, anneeSortie from Item inner join type on Item.idType=Type.id where Type.nomType = 'Film'"""
+    requete = """select titre, anneeSortie, description from Item inner join type on Item.idType=Type.id where Type.nomType = 'Film'"""
     return _select(requete)
 
 def get_all_livre():
-    requete = """select titre, anneeSortie from Item inner join type on Item.idType=Type.id where Type.nomType = 'Livre'"""
+    requete = """select titre, anneeSortie, description from Item inner join type on Item.idType=Type.id where Type.nomType = 'Livre'"""
     return _select(requete)
 
 def get_all_musiques():
