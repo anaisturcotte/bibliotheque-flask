@@ -15,7 +15,7 @@ def _select(requete, params=None):
 
 
 def get_item_by(id_Createur):
-    requete = """select Item.titre, Item.anneeSortie
+    requete = """select Item.titre, Item.anneeSortie, Item.description
                     from Item
                     where Item.idCreateur=?
                     order by Item.annee desc"""
