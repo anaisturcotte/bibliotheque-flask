@@ -22,7 +22,7 @@ def get_item_by(id_Createur):
     return _select(requete, params=(id_Createur))
 
 def get_all_items():
-    requete = """select Item.titre, Item.anneeSortie, Type.nomType
+    requete = """select Item.image, Item.titre, Item.anneeSortie, Type.nomType
                         from Item inner join type on Item.idType=Type.id"""
     return _select(requete)
 

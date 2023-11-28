@@ -43,6 +43,7 @@ h1 {
   text-align: center;
   position: relative;
   display: inline-block;
+  justify-content: center;
 }
 
 .headBox {
@@ -108,4 +109,21 @@ h1 {
 a {
   text-decoration: none;
   color: #fff;
+}
+
+.table {
+  width: 90vh;
+}
+
+.celluleImg{
+  width:fit-content;
+}
+
+.conteneurOeuvre{
+  border: 1px solid black;
+  width:70vh;
+  padding: 5px;
+  margin:10px;
+  position: relative;
+  border-radius: 5px;
 }
