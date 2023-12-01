@@ -3,31 +3,38 @@
 
 {% block container %}
 
-<div class="secondHeaderRow yellow"><p style="color:#FFAF00;">hehe</p></div>
-<div class="secondHeaderRow orange"><p style="color:#D34A24">hehe</p></div>
-<div class="secondHeaderRow red"><p style="color:#992800">hehe</p></div>
-<div class="secondHeaderRow green"><p style="color:#3C7F72">hehe</p></div>
+<div class="row">
+    <div class="colorLine yellow"><p style="color:#FFAF00;"> </p></div>
+    <div class="creamLine"> </div>
+    <div class="colorLine orange"><p style="color:#D34A24"> </p></div>
+    <div class="creamLine"> </div>
+    <div class="colorLine red"><p style="color:#992800"> </p></div>
+    <div class="creamLine"> </div>
+    <div class="colorLine green"><p style="color:#3C7F72"> </p></div>
 
-<h1 class="title is-1">Liste de toutes les oeuvres</h1>
-<!-- <table class="table is-narrow is-hoverable is-bordered">
-    <thead><tr><td><b></b></td><td><b>Titre</b></td><td><b>Année</b></td><td><b>Type</b></td></thead>
-    <tbody>
-    {% for image, titre, anneeSortie, nomType in items %}
-        <tr><td class="celluleImg"><img src= "{{ image }}" width="200vh"></td><td>{{ titre }}</td><td>{{ anneeSortie }}</td><td>{{ nomType }}</td></tr>
-    
-    {% endfor %}
-    </tbody>
-</table> -->
-{%for item in items%}
-    <div class="conteneurEx">
-        <div class="conteneurOeuvre">
-        <table>
-            <tr>
-                <td><img src= "{{ item[0] }}" width="200vh"></td><td>{{ item[1] }}</td><td>{{ item[2] }}</td><td>{{ item[3] }}</td>
-            </tr>
-        </table>
+    <div class="main">
+        <h1 class="title is-1">Liste de toutes les oeuvres</h1>
+        <!-- <table class="table is-narrow is-hoverable is-bordered">
+            <thead><tr><td><b></b></td><td><b>Titre</b></td><td><b>Année</b></td><td><b>Type</b></td></thead>
+            <tbody>
+            {% for image, titre, anneeSortie, nomType in items %}
+                <tr><td class="celluleImg"><img src= "{{ image }}" width="200vh"></td><td>{{ titre }}</td><td>{{ anneeSortie }}</td><td>{{ nomType }}</td></tr>
+            
+            {% endfor %}
+            </tbody>
+        </table> -->
+        {%for item in items%}
+            <div class="conteneurEx">
+                <div class="conteneurOeuvre">
+                <table>
+                    <tr>
+                        <td><img src= "{{ item[0] }}" width="200vh"></td><td>{{ item[1] }}</td><td>{{ item[2] }}</td><td>{{ item[3] }}</td>
+                    </tr>
+                </table>
+            </div>
+            </div>
     </div>
-    </div>
+</div>
 {%endfor%} 
 
 {% endblock %}

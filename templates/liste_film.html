@@ -2,23 +2,29 @@
 {% block title %} Liste de films {% endblock %}
 
 {% block container %}
+<div class="row">
+    <div class="colorLine yellow"><p style="color:#FFAF00;"> </p></div>
+    <div class="creamLine"> </div>
+    <div class="colorLine orange"><p style="color:#D34A24"> </p></div>
+    <div class="creamLine"> </div>
+    <div class="colorLine red"><p style="color:#992800"> </p></div>
+    <div class="creamLine"> </div>
+    <div class="colorLine green"><p style="color:#3C7F72"> </p></div>
 
-<div class="secondHeaderRow yellow"><p style="color:#FFAF00;">hehe</p></div>
-<div class="secondHeaderRow orange"><p style="color:#D34A24">hehe</p></div>
-<div class="secondHeaderRow red"><p style="color:#992800">hehe</p></div>
-<div class="secondHeaderRow green"><p style="color:#3C7F72">hehe</p></div>
-
-<h1 class="title is-1">Liste de tous les films</h1>
-{%for item in items%}
-    <div class="conteneurEx">
-        <div class="conteneurOeuvre">
-        <table>
-            <tr>
-                <td><img src= "{{ item[0] }}" width="200vh"></td><td>{{ item[1] }}</td><td>{{ item[2] }}</td><td>{{ item[3] }}</td>
-            </tr>
-        </table>
+    <div class="main">
+    <h1 class="title is-1">Liste de tous les films</h1>
+    {%for item in items%}
+        <div class="conteneurEx">
+            <div class="conteneurOeuvre">
+            <table>
+                <tr>
+                    <td><img src= "{{ item[0] }}" width="200vh"></td><td>{{ item[1] }}</td><td>{{ item[2] }}</td><td>{{ item[3] }}</td>
+                </tr>
+            </table>
+        </div>
+        </div>
     </div>
-    </div>
+</div>
 {%endfor%} 
 
 {% endblock %}
