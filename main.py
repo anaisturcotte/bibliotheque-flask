@@ -52,20 +52,21 @@ def items():
     print(items)
     return render_template("liste_items.html", items=items)
 
+@app.route('/form.html', methods=['post', 'get'])
+def login():
+    message = 'votre créateur a été ajouté à la BDD :)'
+    if request.method == 'POST':
+        Prenom = request.form.get('createurPrenom')
+        Nom = request.form.get('createurNom')
 
-###################### FORM POUR RENTRER DES DONNEES DANS LA BASE DEPUIS LE SITE ######################
+        request= f"""insert into createur (nom, prenom)
+                    values ({Prenom}, {Nom})"""
 
-@app.route('/form.html', methods=['GET', 'POST'])
-def form():
-    form = db.questions() # la classe de questions dans database.py
-    # AJOUT D'UNE FONCTIONALITE AU FORM #
-    if form.is_submitted():
-        # utilise mtn le 'POST'
-        result  = request.form
-        return render_template('resutat_form.html')
-    return render_template('form.html', form=form)
+    return render_template('login.html', message=message)
 
-#######################################################################################################
+# from:
+# https://overiq.com/flask-101/form-handling-in-flask/
+
    
 if __name__ == "__main__":
     app.run(debug=True)

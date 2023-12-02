@@ -1,16 +1,25 @@
 {% extends "common_layout.html" %}
-{% block title %} Form pour ajouter un createur {% endblock %}
+{% block title %} Form pour ajouter un créateur {% endblock %}
 
 {% block container %}
-    <form action="/resultat_form.html" method="post">
-        <p> 
-            {{form.createurNom.label}} 
-            {{form.createurNom(size=30)}}
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <form action="" method="post">
+        <p>
+            <label for="createurPrenom">Prénom du créateur:</label>
+            <input type="text" name="createurPrenom">
         </p>
-        <p> 
-            {{form.createurPrenom.label}}
-            {{form.createurPrenom(size=30)}}
+        <p>
+            <label for="createurNom">Nom du créateur:</label>
+            <input type="text" name="createurNom">
         </p>
-        <p> {{form.submit()}} </p>
+        <p>
+            <input type="submit">
+        </p>
     </form>
 {% endblock %}
+
+<!-- from:
+https://overiq.com/flask-101/form-handling-in-flask/ -->

@@ -1,5 +1,7 @@
 import sqlite3
 
+from flask import Flask, render_template, request
+
 DBNAME = "bibliotheque.db"
 
 def _select(requete, params=None):
@@ -49,3 +51,15 @@ def admin(tableName):
 def titreColonne(tableName):
     requete= f"""PRAGMA table_info({tableName});"""
     return _select(requete)
+
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired
+
+class ajoutCreateur(FlaskForm):
+    Qprenom = StringField("Prenom: ", validators=[DataRequired()])
+    Qnom = StringField("Nom: ", validators=[DataRequired()])
+    submit = SubmitField("Submit")
+
+# from:
+# https://overiq.com/flask-101/form-handling-in-flask/
