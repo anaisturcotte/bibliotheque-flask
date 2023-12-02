@@ -1,6 +1,10 @@
 import sqlite3
 
-from flask import Flask, render_template, request
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 
 DBNAME = "bibliotheque.db"
 
@@ -25,7 +29,8 @@ def get_item_by(id_Createur):
 
 def get_all_items():
     requete = """select Item.image, Item.titre, Item.anneeSortie, Type.nomType
-                        from Item inner join type on Item.idType=Type.id"""
+                        from Item inner join type on Item.idType=Type.id
+                        order by Item.titre asc;"""
     return _select(requete)
 
 def get_all_films():
@@ -53,7 +58,7 @@ def titreColonne(tableName):
     return _select(requete)
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField
+from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 class ajoutCreateur(FlaskForm):

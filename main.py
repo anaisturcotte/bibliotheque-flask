@@ -1,17 +1,12 @@
-from flask import render_template, request, Flask
+from flask import render_template, request, Flask, redirect, url_for
 # from flask_wtf import CSRFProtect
 import database as db
 
+from flask import Flask, render_template, request, redirect, url_for
+
 app = Flask(__name__)
 
-# app.secret_key = 'poop'
-
-# # Flask-WTF requires this line
-# csrf = CSRFProtect(app)
-
-# import secrets
-# foo = secrets.token_urlsafe(16)
-# app.secret_key = foo
+app.config['SECRET_KEY'] = 'poop'
 
 @app.route('/')
 def index():
@@ -52,17 +47,22 @@ def items():
     print(items)
     return render_template("liste_items.html", items=items)
 
-@app.route('/form.html', methods=['post', 'get'])
-def login():
+@app.route('/form.html', methods=['GET', 'POST'])
+def form():
     message = 'votre créateur a été ajouté à la BDD :)'
-    if request.method == 'POST':
+    if form.validate_on_submit():
         Prenom = request.form.get('createurPrenom')
         Nom = request.form.get('createurNom')
+        requete= f"""insert into createur (nom, prenom)
+                    values ({Nom}, {Prenom})"""
+        return redirect(url_for('success'))
 
-        request= f"""insert into createur (nom, prenom)
-                    values ({Prenom}, {Nom})"""
+    return render_template('form.html', message=message)
 
-    return render_template('login.html', message=message)
+
+@app.route('/success')
+def success():
+    return 'Form submitted successfully!'
 
 # from:
 # https://overiq.com/flask-101/form-handling-in-flask/
