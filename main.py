@@ -1,12 +1,9 @@
-from flask import render_template, request, Flask, redirect, url_for
-# from flask_wtf import CSRFProtect
 import database as db
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import render_template, request, Flask, redirect, url_for
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'poop'
 
 @app.route('/')
 def index():
@@ -49,7 +46,6 @@ def items():
 
 @app.route('/form.html', methods=['GET', 'POST'])
 def form():
-    message = 'votre créateur a été ajouté à la BDD :)'
     if form.validate_on_submit():
         Prenom = request.form.get('createurPrenom')
         Nom = request.form.get('createurNom')
@@ -57,7 +53,7 @@ def form():
                     values ({Nom}, {Prenom})"""
         return redirect(url_for('success'))
 
-    return render_template('form.html', message=message)
+    return render_template('form.html')
 
 
 @app.route('/success')

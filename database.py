@@ -62,8 +62,8 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 class ajoutCreateur(FlaskForm):
-    Qprenom = StringField("Prenom: ", validators=[DataRequired()])
-    Qnom = StringField("Nom: ", validators=[DataRequired()])
+    Qprenom = StringField("Prenom: ")
+    Qnom = StringField("Nom: ")
     submit = SubmitField("Submit")
 
 # from:
