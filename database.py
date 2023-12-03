@@ -2,9 +2,6 @@ import sqlite3
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
 
 DBNAME = "bibliotheque.db"
 
@@ -57,6 +54,7 @@ def titreColonne(tableName):
     requete= f"""PRAGMA table_info({tableName});"""
     return _select(requete)
 
+
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
@@ -65,6 +63,10 @@ class ajoutCreateur(FlaskForm):
     Qprenom = StringField("Prenom: ")
     Qnom = StringField("Nom: ")
     submit = SubmitField("Submit")
+
+def ajoutCreateurRequete(Nom,Prenom):
+    requete= f"""insert into createur (nom, prenom)
+                    values ({Nom}, {Prenom})"""
 
 # from:
 # https://overiq.com/flask-101/form-handling-in-flask/

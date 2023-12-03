@@ -1,3 +1,4 @@
+from wtforms import SubmitField
 import database as db
 
 from flask import render_template, request, Flask, redirect, url_for
@@ -45,20 +46,16 @@ def items():
     return render_template("liste_items.html", items=items)
 
 @app.route('/form.html', methods=['GET', 'POST'])
-def form():
-    if form.validate_on_submit():
-        Prenom = request.form.get('createurPrenom')
-        Nom = request.form.get('createurNom')
-        requete= f"""insert into createur (nom, prenom)
-                    values ({Nom}, {Prenom})"""
+def ajoutCreateur():
+    if SubmitField=="yes":
+        db.ajoutCreateurRequete(request.form.get('createurNom'), request.form.get('createurPrenom'))
         return redirect(url_for('success'))
-
     return render_template('form.html')
 
 
 @app.route('/success')
 def success():
-    return 'Form submitted successfully!'
+    return render_template('success.html')
 
 # from:
 # https://overiq.com/flask-101/form-handling-in-flask/
