@@ -1,7 +1,7 @@
 import sqlite3
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SelectField, SubmitField
 
 DBNAME = "bibliotheque.db"
 
@@ -59,18 +59,27 @@ def titreColonne(tableName):
     return _select(requete)
 
 
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
-
 class ajoutCreateur(FlaskForm):
-    Qprenom = StringField("Prenom: ")
-    Qnom = StringField("Nom: ")
+    QCreateurPrenom = StringField("Prenom: ")
+    QCreateurNom = StringField("Nom: ")
+    QTypeType = SelectField("Type: ", choices= [ ('livre', 'Livre'), ('film', 'Film') ])
+    QTypeGenre = StringField("Genre: ")
+    QItemTitre = StringField("Titre: ")
+    QItemAnneeSortie = StringField("Année de sortie: ")
+    QItemDescription = StringField("Description: ")
+    QItemNote = SelectField("Note sur 10", choices= [ ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'), ('7', '7'), ('8', '8'), ('9', '9'), ('10', '10'),])
+    QImage = StringField("Lien pour une image: ")
     submit = SubmitField("Submit")
 
-def ajoutCreateurRequete(Nom,Prenom):
+def ajoutCreateurRequete(Nom,Prenom,Type,Genre,Image,Titre,AnneeSortie,Description,Note,):
     requete= f"""insert into Createur (nom, prenom)
                     values ('{Nom}', '{Prenom}')"""
+    requete= f"""insert into Type (nomType, nomGenre)
+                    values ('{Type}', '{Genre}')"""
+    requete= f"""select idCreateur from Createur where Createur.nom = '{Nom}' and Createur.prenom = '{Prenom}' as 'IdCreateur'"""
+    requete= f"""select idType from Type where Type.nomType = '{Type}' and Type.nomGenre = '{Genre}' as 'IdType'"""
+    requete= f"""insert into Item (image, titre, anneeSortie, description, note, idCreateur, idType, idDisponibilite)
+                    values ('{Image}', '{Titre}', {AnneeSortie}, '{Description}', '{Note}', 'IdCreateur', 'IdType', 0)"""
     print(requete)
     return _select(requete)
 

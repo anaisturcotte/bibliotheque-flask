@@ -55,7 +55,6 @@ def items():
 
 @app.route('/form.html', methods=['GET', 'POST'])
 def ajoutCreateur():
-    print("form xyz")
     if SubmitField=="yes":
         return redirect(url_for('success'))
     return render_template('form.html')
@@ -63,8 +62,16 @@ def ajoutCreateur():
 
 @app.route('/success')
 def success():
-    print(f"success xyz ${request.args.get('createurNom')}")
-    db.ajoutCreateurRequete(request.args.get('createurNom'), request.args.get('createurPrenom'))
+    db.ajoutCreateurRequete(
+    request.args.get('createurNom'),
+    request.args.get('createurPrenom'),
+    request.args.get('typeType'),
+    request.args.get('typeGenre'),
+    request.args.get('itemImage'),
+    request.args.get('itemTitre'),
+    request.args.get('itemAnneeSortie'),
+    request.args.get('itemDescription'),
+    request.args.get('itemNote'),)
     return render_template('success.html')
 
 # from:
