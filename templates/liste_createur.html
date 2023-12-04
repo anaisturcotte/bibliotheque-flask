@@ -1,0 +1,30 @@
+{% extends "common_layout.html" %}
+{% block title %} Liste de  createurs {% endblock %}
+
+{% block container %}
+<div class="row">
+    <div class="colorLine yellow"><p style="color:#FFAF00;"></p></div>
+    <div class="creamLine"></div>
+    <div class="colorLine orange"><p style="color:#D34A24"></p></div>
+    <div class="creamLine"></div>
+    <div class="colorLine red"><p style="color:#992800"></p></div>
+    <div class="creamLine"></div>
+    <div class="colorLine green"><p style="color:#3C7F72"></p></div>
+
+    <div class="main">
+        <h1 class="title is-1">Liste de tous les createurs</h1>
+        {%for createur in createurs%}
+            <div class="conteneurEx">
+                <div class="conteneurOeuvre">
+                <table>
+                    <tr>
+                        <td>{{ item[0] }}</td><td>{{ item[1] }}</td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+        {%endfor%} 
+    </div>
+</div>
+
+{% endblock %}

@@ -31,6 +31,14 @@ def items_film():
     print(items)
     return render_template("liste_film.html", items=items)
 
+
+@app.route('/liste_createur.html')
+def createurs_film():
+    print()
+    createurs = db.get_all_createur()
+    print(createurs)
+    return render_template("liste_createur.html", createurs=createurs)
+
 @app.route('/liste_musique.html')
 def items_musique():
     print()
@@ -47,14 +55,16 @@ def items():
 
 @app.route('/form.html', methods=['GET', 'POST'])
 def ajoutCreateur():
+    print("form xyz")
     if SubmitField=="yes":
-        db.ajoutCreateurRequete(request.form.get('createurNom'), request.form.get('createurPrenom'))
         return redirect(url_for('success'))
     return render_template('form.html')
 
 
 @app.route('/success')
 def success():
+    print(f"success xyz ${request.args.get('createurNom')}")
+    db.ajoutCreateurRequete(request.args.get('createurNom'), request.args.get('createurPrenom'))
     return render_template('success.html')
 
 # from:

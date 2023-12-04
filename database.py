@@ -42,6 +42,10 @@ def get_all_livre():
                         where Type.nomType = 'Livre'"""
     return _select(requete)
 
+def get_all_createur():
+    requete = """select nom, prenom from Createur"""
+    return _select(requete)
+
 def get_all_musiques():
     requete = """select titre, anneeSortie from Item inner join type on Item.idType=Type.id where Type.nomType = 'Musique'"""
     return _select(requete)
@@ -65,8 +69,10 @@ class ajoutCreateur(FlaskForm):
     submit = SubmitField("Submit")
 
 def ajoutCreateurRequete(Nom,Prenom):
-    requete= f"""insert into createur (nom, prenom)
-                    values ({Nom}, {Prenom})"""
+    requete= f"""insert into Createur (nom, prenom)
+                    values ('{Nom}', '{Prenom}')"""
+    print(requete)
+    return _select(requete)
 
 # from:
 # https://overiq.com/flask-101/form-handling-in-flask/
