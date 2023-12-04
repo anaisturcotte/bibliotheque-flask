@@ -2,66 +2,79 @@
 {% block title %} Form pour ajouter un créateur {% endblock %}
 
 {% block container %}
-    {% if message %}
-        <p>{{ message }}</p>
-    {% endif %}
 
-    <form action="success" value="yes" method="get">
-        <p>
-            <label for="createurPrenom">Prénom du créateur:</label>
-            <input type="text" name="createurPrenom">
-        </p>
-        <p>
-            <label for="createurNom">Nom du créateur:</label>
-            <input type="text" name="createurNom">
-        </p>
-        <p>
-            <label for="typeType">Type:</label>
-            <select name="typeType">
-                <option value="Livre">Livre</option>
-                <option value="Film">Film</option>
-            </select>
-        </p>
-        <p>
-            <label for="itemTitre">Titre:</label>
-            <input type="text" name="itemTitre">
-        </p>
-        <p>
-            <label for="typeGenre">Genre:</label>
-            <input type="text" name="typeGenre" size="30">
-        </p>
-        <p>
-            <label for="itemAnneeSortie">Année de sortie:</label>
-            <input type="text" name="itemAnneeSortie" size="4">
-        </p>
-        <p>
-            <label for="itemDescription">Description:</label>
-            <input type="text" name="itemDescription" size="150">
-        </p>
-        <p>
-            <label for="itemNote">Note:</label>
-            <select name="itemNote">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-        </p>
-        <p>
-            <label for="itemImage">Lien pour une image:</label>
-            <input type="text" name="itemImage" size="60">
-        </p>
-        <p>
-            <input type="submit">
-        </p>
-    </form>
+<div class="row">
+    <div class="colorLine yellow"><p style="color:#FFAF00;"></p></div>
+    <div class="creamLine"></div>
+    <div class="colorLine orange"><p style="color:#D34A24"></p></div>
+    <div class="creamLine"></div>
+    <div class="colorLine red"><p style="color:#992800"></p></div>
+    <div class="creamLine"></div>
+    <div class="colorLine green"><p style="color:#3C7F72"></p></div>
+    
+    <div class="main">
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+        <form action="success" value="yes" method="get">
+            <p>
+                <label for="createurPrenom">Prénom du créateur:</label>
+                <input type="text" name="createurPrenom">
+            </p>
+            <p>
+                <label for="createurNom">Nom du créateur:</label>
+                <input type="text" name="createurNom">
+            </p>
+            <p>
+                <label for="typeType">Type:</label>
+                <select name="typeType">
+                    <option value="Livre">Livre</option>
+                    <option value="Film">Film</option>
+                </select>
+            </p>
+            <p>
+                <label for="itemTitre">Titre:</label>
+                <input type="text" name="itemTitre">
+            </p>
+            <p>
+                <label for="typeGenre">Genre:</label>
+                <input type="text" name="typeGenre" size="30">
+            </p>
+            <p>
+                <label for="itemAnneeSortie">Année de sortie:</label>
+                <input type="text" name="itemAnneeSortie" size="4">
+            </p>
+            <p>
+                <label for="itemDescription">Description:</label>
+                <input type="text" name="itemDescription" size="150">
+            </p>
+            <p>
+                <label for="itemNote">Note:</label>
+                <select name="itemNote">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </p>
+            <p>
+                <label for="itemImage">Lien pour une image:</label>
+                <input type="text" name="itemImage" size="60">
+            </p>
+            <p>
+                <input type="submit">
+            </p>
+        </form>
+    </div>
+</div>
 {% endblock %}
+
 
 <!-- from:
 https://overiq.com/flask-101/form-handling-in-flask/ -->

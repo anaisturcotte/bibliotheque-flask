@@ -71,17 +71,33 @@ class ajoutCreateur(FlaskForm):
     QImage = StringField("Lien pour une image: ")
     submit = SubmitField("Submit")
 
-def ajoutCreateurRequete(Nom,Prenom,Type,Genre,Image,Titre,AnneeSortie,Description,Note,):
-    requete= f"""insert into Createur (nom, prenom)
-                    values ('{Nom}', '{Prenom}')"""
-    requete= f"""insert into Type (nomType, nomGenre)
-                    values ('{Type}', '{Genre}')"""
-    requete= f"""select idCreateur from Createur where Createur.nom = '{Nom}' and Createur.prenom = '{Prenom}' as 'IdCreateur'"""
-    requete= f"""select idType from Type where Type.nomType = '{Type}' and Type.nomGenre = '{Genre}' as 'IdType'"""
-    requete= f"""insert into Item (image, titre, anneeSortie, description, note, idCreateur, idType, idDisponibilite)
-                    values ('{Image}', '{Titre}', {AnneeSortie}, '{Description}', '{Note}', 'IdCreateur', 'IdType', 0)"""
-    print(requete)
-    return _select(requete)
+def ajoutCreateurRequete(Nom, Prenom, Type, Genre, Image, Titre, AnneeSortie, Description, Note):
+    idCreateur=''
+    idType=''
+    ajoutDeCreateur = f"""INSERT INTO Createur (nom, prenom)
+                                VALUES ('{Nom}', '{Prenom}')"""
+    print(Nom, Prenom)
+    ajoutDeType = f"""INSERT INTO Type (nomType, nomGenre)
+                            VALUES ('{Type}', '{Genre}')"""
+    print(Type, Genre)
+    createur_id_query = f"""SELECT idCreateur
+                           FROM Createur
+                           WHERE nom = '{Nom}' AND prenom = '{Prenom}'
+                           AS '{idCreateur}'"""
+    print(createur_id_query)
+    type_id_query = f"""SELECT idType
+                       FROM Type
+                       WHERE nomType = '{Type}' AND nomGenre = '{Genre}'
+                       AS '{idType}'"""
+    print(type_id_query)
+    insertionFinale = f"""INSERT INTO Item (image, titre, anneeSortie, description, note, idCreateur, idType, idDisponibilite)
+                            VALUES ('{Image}', '{Titre}', {AnneeSortie}, '{Description}', '{Note}', 
+                                    ({idCreateur}), ({idType}), 0)"""
+
+    # Now you can execute these queries using your database connection
+    # For example: _select(createur_insert_query)
+
+    return (ajoutDeCreateur, ajoutDeType, createur_id_query, type_id_query, insertionFinale)
 
 # from:
 # https://overiq.com/flask-101/form-handling-in-flask/
