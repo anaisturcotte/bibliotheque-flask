@@ -22,14 +22,14 @@ h1 {
 }
 
 .colorLine {
-  -ms-flex: 5%; 
-  flex: 5%;
+  -ms-flex: 2%; 
+  flex: 2%;
   padding: 1px;
 }
 
 .creamLine {
-  -ms-flex: 3%; 
-  flex: 3%;
+  -ms-flex: 1%; 
+  flex: 1%;
   background-color: #FFFBED;
 }
 
