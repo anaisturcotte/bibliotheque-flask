@@ -11,23 +11,26 @@
     <div class="colorLine red"><p style="color:#992800"></p></div>
     <div class="creamLine"></div>
     <div class="colorLine green"><p style="color:#3C7F72"></p></div>
-
+</div>
+<div class="all">
     <div class="main">
         <h1 class="title is-1">Liste de toutes les oeuvres</h1>
         {%for item in items%}
-            <div class="conteneurOeuvre">
-                <table>
-                    <tr>
-                        <tr><td><img src= "{{ item[0] }}" width="200vh"></td></tr>
+            <div class="ligne">
+                <div class="conteneurOeuvre">
+                    <table>
                         <tr>
-                            <tr><b>{{ item[1] }}</b></tr>
-                            <tr> (<i>{{ item[2] }}</i>)</td><br>
-                            <tr>{{ item[3] }}</tr><br>
-                            <tr><u>Type:</u> {{ item[4] }}</tr><br>
-                            <tr><u>Genre:</u> {{ item[5] }}</tr>
+                            <img src= "{{ item[0] }}" width="200vh"><br>
+                            <tr>
+                                <tr><b>{{ item[1] }}</b></tr>
+                                <tr> (<i>{{ item[2] }}</i>)</td><br>
+                                <tr class="caption">{{ item[3] }}</tr><br>
+                                <tr><u>Type:</u> {{ item[4] }}</tr><br>
+                                <tr><u>Genre:</u> {{ item[5] }}</tr>
+                            </tr>
                         </tr>
-                    </tr>
-                </table>
+                    </table>
+                </div>
             </div>
         {%endfor%} 
     </div>
