@@ -16,7 +16,7 @@
             <thead>
                 <tr>
                     {% for colonne in colonnes %}
-                        <td><b>{{colonne[1]}}</b></td>
+                        <td style="max-width: 5%;"><b>{{colonne[1]}}</b></td>
                     {% endfor %}
                 </tr>
             </thead>
@@ -24,7 +24,7 @@
                 {% for item in items %}
                     <tr>
                         {% for ligne in item %}
-                            <td>{{ligne}}</td>
+                            <td style="max-width: 5%;">{{ligne}}</td>
                         {% endfor%}
                     </tr>
                 {% endfor %}

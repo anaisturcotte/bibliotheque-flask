@@ -37,20 +37,22 @@ def get_item_by(id_Createur):
     return _select(requete, params=(id_Createur))
 
 def get_all_items():
-    requete = """select Item.image, Item.titre, Item.anneeSortie, Item.description, Type.nomType, Type.nomGenre
-                        from Item inner join type on Item.idType=Type.id
+    requete = """select Item.image, Item.titre, Item.anneeSortie, Item.description, Type.nomType, Type.nomGenre, Disponibilite.ouiNon
+                        from Item inner join type on Item.idType=Type.id inner join Disponibilite on Item.idDisponibilite=Disponibilite.id
                         order by Item.titre asc;"""
     return _select(requete)
 
 def get_all_films():
-    requete = """select Item.image, Item.titre, Item.anneeSortie,Item.description, Type.nomGenre 
-                        from Item inner join type on Item.idType=Type.id 
+    requete = """select Item.image, Item.titre, Item.anneeSortie,Item.description, Type.nomGenre, Disponibilite.ouiNon
+                        from Item inner join type on Item.idType=Type.id inner join Disponibilite on Item.idDisponibilite=Disponibilite.id
                         where Type.nomType = 'Film'"""
     return _select(requete)
 
 def get_all_livre():
-    requete = """select Item.image, Item.titre, Item.anneeSortie,Item.description, Type.nomGenre 
-                        from Item inner join type on Item.idType=Type.id 
+    requete = """select Item.image, Item.titre, Item.anneeSortie,Item.description, Type.nomGenre, Disponibilite.ouiNon
+                        from Item 
+						inner join type on Item.idType=Type.id 
+						inner join Disponibilite on Item.idDisponibilite=Disponibilite.id
                         where Type.nomType = 'Livre'"""
     return _select(requete)
 
