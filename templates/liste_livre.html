@@ -20,13 +20,15 @@
                 <div class="conteneurOeuvre">
                     <table>
                         <tr>
-                            <img src= "{{ item[0] }}" width="200vh"><br>
-                            <tr>
-                                <tr><b>{{ item[1] }}</b></tr>
-                                <tr> (<i>{{ item[2] }}</i>)</td><br>
-                                <tr class="caption">{{ item[3] }}</tr><br>
-                                <tr><u>Genre:</u> {{ item[4] }}</tr><br>
-                            </tr>
+                            <td><img src= "{{ item[0] }}" width="200vh"></td><br>
+                            <td><div>
+                                <table>
+                                    <tr><td><b>{{ item[1] }}</b></td></tr>
+                                    <tr><td> (<i>{{ item[2] }}</i>)</td></tr><br>
+                                    <tr class="caption"><td>{{ item[3] }}</td></tr><br>
+                                    <tr><td><u>Genre:</u> {{ item[4] }}</td></tr>
+                                </table>
+                            </div></td>
                         </tr>
                     </table>
                 </div>
