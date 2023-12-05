@@ -14,8 +14,20 @@ def _select(requete, params=None):
         else:
             c.execute(requete, params)
         res = c.fetchall()
+        c.close()
     return res
 
+def _update(requete, params=None):
+    """ Exécute une requête type insert/update"""
+    conn = sqlite3.connect(DBNAME)
+    cursor = conn.cursor()
+
+    try:
+        # Assuming you have a table named 'createur'
+        cursor.execute(requete, params)
+        conn.commit()
+    finally:
+        conn.close()
 
 def get_item_by(id_Createur):
     requete = """select Item.titre, Item.anneeSortie
@@ -72,32 +84,35 @@ class ajoutCreateur(FlaskForm):
     submit = SubmitField("Submit")
 
 def ajoutCreateurRequete(Nom, Prenom, Type, Genre, Image, Titre, AnneeSortie, Description, Note):
-    idCreateur=''
-    idType=''
     ajoutDeCreateur = f"""INSERT INTO Createur (nom, prenom)
-                                VALUES ('{Nom}', '{Prenom}')"""
+                                VALUES (?, ?)"""
     print(Nom, Prenom)
+    _update(ajoutDeCreateur, (Nom, Prenom))
+
     ajoutDeType = f"""INSERT INTO Type (nomType, nomGenre)
-                            VALUES ('{Type}', '{Genre}')"""
+                            VALUES (?, ?)"""
     print(Type, Genre)
-    createur_id_query = f"""SELECT idCreateur
+    _update(ajoutDeType, (Type, Genre))
+
+    createur_id_query = f"""SELECT id
                            FROM Createur
-                           WHERE nom = '{Nom}' AND prenom = '{Prenom}'
-                           AS '{idCreateur}'"""
+                           WHERE nom = ? AND prenom = ?"""
     print(createur_id_query)
-    type_id_query = f"""SELECT idType
+    createur_id = _select(createur_id_query, (Nom, Prenom))
+    print(f"createur_id = {createur_id}")
+    createur_id = createur_id[0][0]
+
+    type_id_query = f"""SELECT id
                        FROM Type
-                       WHERE nomType = '{Type}' AND nomGenre = '{Genre}'
-                       AS '{idType}'"""
+                       WHERE nomType = ? AND nomGenre = ?"""
     print(type_id_query)
+    type_id = _select(type_id_query, (Type, Genre))    
+    print(f"type_id = {type_id}")
+    type_id = type_id[0][0]
+
     insertionFinale = f"""INSERT INTO Item (image, titre, anneeSortie, description, note, idCreateur, idType, idDisponibilite)
-                            VALUES ('{Image}', '{Titre}', {AnneeSortie}, '{Description}', '{Note}', 
-                                    ({idCreateur}), ({idType}), 0)"""
-
-    # Now you can execute these queries using your database connection
-    # For example: _select(createur_insert_query)
-
-    return (ajoutDeCreateur, ajoutDeType, createur_id_query, type_id_query, insertionFinale)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, 0)"""
+    _update(insertionFinale, (Image, Titre, AnneeSortie, Description, Note, createur_id, type_id))
 
 # from:
 # https://overiq.com/flask-101/form-handling-in-flask/

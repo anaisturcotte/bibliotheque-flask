@@ -16,7 +16,7 @@ def admin(tableName):
     items = db.admin(tableName)
     colonnes = db.titreColonne(tableName)
     return render_template("admin.html", items=items, colonnes=colonnes)
-
+    
 @app.route('/liste_livre.html')
 def items_livre():
     print()
