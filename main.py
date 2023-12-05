@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     items = db.get_all_items()
-    return render_template("liste_all_items.html", items=items)
+    return render_template("index.html", items=items)
 
 @app.route('/admin/<tableName>')
 def admin(tableName):
