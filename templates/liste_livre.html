@@ -16,10 +16,12 @@
     <div class="main">
         <a href="/" style="color:black">< Back</a>
         <h1 class="title is-1">Liste de tous les livres</h1>
+            <!-- contenu page avec tous les livres + description  -->
         {%for item in items%}
             <div class="ligne">
                 <div class="conteneurOeuvre">
                     <table>
+                        <!-- tables dans table pour mettre titems cote a cote -->
                         <tr>
                             <td><img src= "{{ item[0] }}" width="200vh"></td><br>
                             <td><div>

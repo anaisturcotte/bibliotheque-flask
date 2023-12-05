@@ -7,17 +7,20 @@ app = Flask(__name__)
 
 
 @app.route('/')
+# page de presentation renvoie a page index
 def index():
     items = db.get_all_items()
     return render_template("index.html", items=items)
 
 @app.route('/admin/<tableName>')
+# route pour toutes les vues admin
 def admin(tableName):
     items = db.admin(tableName)
     colonnes = db.titreColonne(tableName)
     return render_template("admin.html", items=items, colonnes=colonnes)
     
 @app.route('/liste_livre.html')
+# voir tous les livres
 def items_livre():
     print()
     items = db.get_all_livre()
@@ -25,6 +28,7 @@ def items_livre():
     return render_template("liste_livre.html", items=items)
 
 @app.route('/liste_film.html')
+# voir tous les films
 def items_film():
     print()
     items = db.get_all_films()
@@ -39,6 +43,7 @@ def createurs_film():
     print(createurs)
     return render_template("liste_createur.html", createurs=createurs)
 
+# originalemwenr musique mais abandonné
 @app.route('/liste_musique.html')
 def items_musique():
     print()
@@ -47,6 +52,7 @@ def items_musique():
     return render_template("liste_musique.html", items=items)
 
 @app.route('/liste_items.html')
+# liste de tous les items films+livre
 def items():
     print()
     items = db.get_all_items()
@@ -61,6 +67,7 @@ def ajoutCreateur():
 
 
 @app.route('/success')
+# page succes du formulaire
 def success():
     db.ajoutCreateurRequete(
     request.args.get('createurNom'),

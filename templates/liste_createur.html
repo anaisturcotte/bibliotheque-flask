@@ -1,7 +1,10 @@
 {% extends "common_layout.html" %}
 {% block title %} Liste de  createurs {% endblock %}
 
+<!-- Page seulement visible depuis success.html -->
+
 {% block container %}
+<!-- Ajout du css pour rendre plus interessant -->
 <div class="row">
     <div class="colorLine yellow"><p style="color:#FFAF00;"></p></div>
     <div class="creamLine"></div>
@@ -11,9 +14,11 @@
     <div class="creamLine"></div>
     <div class="colorLine green"><p style="color:#3C7F72"></p></div>
 
+    <!-- body de page ou sont affiches les createurs -->
     <div class="main">
         <a href="/" style="color:black">< Back</a>
         <h1 class="title is-1">Liste de tous les createurs</h1>
+        <!-- fonction definie dans database.py qui cherche tous les createurs -->
         {%for createur in createurs%}
             <div class="conteneurEx">
                 <div class="conteneurCreateur">

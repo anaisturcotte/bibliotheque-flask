@@ -14,11 +14,14 @@
     
     <div class="main">
         <a href="/" style="color:black">< Back</a>
+        <!-- fonction definie dans database.py -->
         <h1 class="title is-1">Ajout d'une oeuvre</h1>
         {% if message %}
             <p>{{ message }}</p>
         {% endif %}
+        <!-- form qui renvoie la valeur yes qu'on va tester dans main -->
         <form action="success" value="yes" method="get">
+            <!-- QUESTIONS : -->
             <br><p>
                 <label for="createurPrenom">Prénom du créateur:</label>
                 <input type="text" name="createurPrenom">
@@ -29,6 +32,7 @@
             </p>
             <p>
                 <label for="typeType">Type:</label>
+                <!-- roll down -->
                 <select name="typeType">
                     <option value="Livre">Livre</option>
                     <option value="Film">Film</option>
@@ -52,6 +56,7 @@
             </p>
             <p>
                 <label for="itemNote">Note:</label>
+                <!-- drop down de la note -->
                 <select name="itemNote">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -71,6 +76,7 @@
             </p>
             <p>
                 <input type="submit"> 
+                <!-- renvoie yes et est repris dans main suivi de l'appel de la fonction insert -->
             </p><br><br><br><br><br>
         </form>
     </div>
